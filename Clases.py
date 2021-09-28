@@ -2,6 +2,8 @@ import cv2
 import numpy as np
 import random
 import math
+from matplotlib import pyplot as plt
+from matplotlib import image as image
 
 class Quadrilateral:
 
@@ -70,23 +72,36 @@ class Quadrilateral:
             return points
 
         Poligono= generatePolygon(ctrX=self.N/2, ctrY=self.N/2, aveRadius=int(np.random.uniform(self.N*0.1, np.sqrt(2*(self.N)**2)/2-self.N*0.1, 1)), irregularity=0.35, spikeyness=0.2, numVerts=Lados)
-
-
-
         Poligono = np.array([Poligono],np.int32)
-
         #print(Lados)
-
-        img_mod =  cv2.polylines(self.img, [Poligono], True, (255,0,255), thickness=3)
-        cv2.imshow('Shapes', img_mod)
+        self.img_mod = cv2.fillPoly(self.img, [Poligono], (255, 0, 255))
+        cv2.imshow('Shapes', self.img_mod)
         cv2.waitKey(0)
-        print(Poligono)
+        cv2.imwrite("poligono.jpeg",self.img_mod)
+       # print(Poligono)
+
+    def DetectCorners(self):
+        path = "poligono.jpeg"
+        img = cv2.imread(path)
+        gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+
+        cv2.imshow('Bordes de Imagen', edges)
+        cv2.imshow('Detector de Lineas', img)
+
+        cv2.waitKey()
+
+
+        cv2.waitKey()
+
+
 
 
 #print(int(np.random.uniform(3,11,1)))
 
 a = Quadrilateral(512)
 a.generate()
+a.DetectCorners()
 
 
 
