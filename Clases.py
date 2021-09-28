@@ -69,7 +69,7 @@ class Quadrilateral:
 
             return points
 
-        Poligono= generatePolygon(ctrX=256, ctrY=256, aveRadius=100, irregularity=0.35, spikeyness=0.2, numVerts=Lados)
+        Poligono= generatePolygon(ctrX=self.N/2, ctrY=self.N/2, aveRadius=int(np.random.uniform(self.N*0.1, np.sqrt(2*(self.N)**2)/2-self.N*0.1, 1)), irregularity=0.35, spikeyness=0.2, numVerts=Lados)
 
 
 
