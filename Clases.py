@@ -220,9 +220,7 @@ class Quadrilateral:
 
 
 
-a = Quadrilateral(512)
-a.generate()
-a.DetectCorners()
+
 
 
 
